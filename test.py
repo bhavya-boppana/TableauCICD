@@ -4,7 +4,7 @@ Created on Mon Jun 21 16:31:37 2021
 
 @author: bhavya boppana
 """
-pip install --upgrade tableau-api-lib
+print("started"3)
 from tableau_api_lib import TableauServerConnection
 from tableau_api_lib.utils.querying import get_projects_dataframe,get_views_dataframe, get_view_data_dataframe
 import random
