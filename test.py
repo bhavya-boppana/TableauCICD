@@ -13,6 +13,10 @@ import random
 import math
 import pandas as pd
 
+
+file2 = open("sample_check.txt","w")
+file2.write("blah blah blah")
+file2.close()
 print("started")
 print("print working")
 tableau_server_config = {
