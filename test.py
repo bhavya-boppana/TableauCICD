@@ -4,8 +4,8 @@ Created on Mon Jun 21 16:31:37 2021
 
 @author: bhavya boppana
 """
-print("started")
 import sys
+sys.stdout.flush()
 import tableau_api_lib
 from tableau_api_lib import TableauServerConnection
 from tableau_api_lib.utils.querying import get_projects_dataframe,get_views_dataframe, get_view_data_dataframe
@@ -13,7 +13,8 @@ import random
 import math
 import pandas as pd
 
-
+print("started")
+print("print working")
 tableau_server_config = {
         'my_env': {
                 'server': 'http://tableauserver.eastus2.cloudapp.azure.com',
