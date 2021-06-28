@@ -157,6 +157,7 @@ def test():
     if len(test_results)==0:
         file1.write("No tests were done on this workbook. Please mention the cases to check")
         file1.close()
+        return
     file1.write("All test cases were passed!! \n")
     print("All test cases were passed!!")
     file1.close() 
