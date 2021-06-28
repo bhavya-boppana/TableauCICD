@@ -35,7 +35,6 @@ conn = TableauServerConnection(tableau_server_config, env='my_env')
 res=conn.sign_in()
 print("sign in:",res)
 
-c=input("enter n:")
 projects_df = get_projects_dataframe(conn)
 
 
