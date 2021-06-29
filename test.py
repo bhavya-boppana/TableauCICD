@@ -14,12 +14,6 @@ import random
 import math
 import pandas as pd
 
-
-file2 = open("sample_check.txt","w")
-file2.write("blah blah blah")
-file2.close()
-print("started")
-print("print working")
 tableau_server_config = {
         'my_env': {
                 'server': 'http://tableauserver.eastus2.cloudapp.azure.com',
@@ -31,18 +25,13 @@ tableau_server_config = {
         }
 }
    
-     
 conn = TableauServerConnection(tableau_server_config, env='my_env')
 res=conn.sign_in()
 print("sign in:",res)
 
-projects_df = get_projects_dataframe(conn)
-
-
 def replace_chars(filter_name):
     new=filter_name.replace(' ','%20')
     return new
-
 
 def filter_test(conn,sheet_id,filter_df):
     filter_name=replace_chars(filter_df.columns[0])
@@ -57,7 +46,6 @@ def filter_test(conn,sheet_id,filter_df):
             return False
     return True 
 
-
 def expected_val_checking(conn,sheet_id,checking_df):
     ref_col=checking_df.columns[0]
     checking_col=checking_df.columns[1]
@@ -69,7 +57,6 @@ def expected_val_checking(conn,sheet_id,checking_df):
             return False
     return True
     
-
 def divide_by_zero(conn,sheet_id):
     sheet_df=get_view_data_dataframe(conn,view_id=sheet_id)
     for col in sheet_df.columns:
@@ -78,7 +65,6 @@ def divide_by_zero(conn,sheet_id):
                 return False
     return True
     
-
 def Null_checking(conn,sheet_id):
     sheet_df=get_view_data_dataframe(conn,view_id=sheet_id)
     for col in sheet_df.columns:
@@ -89,11 +75,14 @@ def Null_checking(conn,sheet_id):
 
 def test():
     file1 = open("testing_results.txt","w")
+
     NameFile=open("workbookname.txt","r+")
     s=NameFile.read()
+
     site_views_df = get_views_dataframe(conn)
     site_views_detailed_df = flatten_dict_column(site_views_df, keys=['name', 'id'], col_name='workbook')
     df = site_views_detailed_df[site_views_detailed_df['workbook_name'] == s]
+        
     xl=pd.ExcelFile(r'tableau2.xlsx')
     sheet_count=len(xl.sheet_names)
     excel=pd.read_excel(r'tableau2.xlsx',list(range(sheet_count)))
