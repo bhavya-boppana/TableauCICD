@@ -88,7 +88,11 @@ def Null_checking(conn,sheet_id):
 
 def test():
     file1 = open("testing_results.txt","w")
-    df=get_views_dataframe(conn)
+    NameFile=open("workbookname.txt","r+")
+    s=NameFile.read()
+    site_views_df = get_views_dataframe(conn)
+    site_views_detailed_df = flatten_dict_column(site_views_df, keys=['name', 'id'], col_name='workbook')
+    df = site_views_detailed_df[site_views_detailed_df['workbook_name'] == s]
     xl=pd.ExcelFile(r'tableau2.xlsx')
     sheet_count=len(xl.sheet_names)
     excel=pd.read_excel(r'tableau2.xlsx',list(range(sheet_count)))
