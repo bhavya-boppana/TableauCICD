@@ -9,6 +9,7 @@ sys.stdout.flush()
 import tableau_api_lib
 from tableau_api_lib import TableauServerConnection
 from tableau_api_lib.utils.querying import get_projects_dataframe,get_views_dataframe, get_view_data_dataframe
+from tableau_api_lib.utils.common import flatten_dict_column
 import random
 import math
 import pandas as pd
