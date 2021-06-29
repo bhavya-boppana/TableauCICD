@@ -25,8 +25,8 @@ tableau_server_config = {
                 'api_version': '3.11',
                 'username': 'Madheswaran',
                 'password': 'Admin1234@',
-                'site_name': 'TableauCICD',
-                'site_url': 'TableauCICD'
+                'site_name': 'TableauDEV',
+                'site_url': 'TableauDEV'
         }
 }
    
