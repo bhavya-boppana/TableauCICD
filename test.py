@@ -13,6 +13,7 @@ from tableau_api_lib.utils.common import flatten_dict_column
 import random
 import math
 import pandas as pd
+import Move_workbook
 
 tableau_server_config = {
         'my_env': {
@@ -152,6 +153,7 @@ def test():
         file1.write("No tests were done on this workbook. Please mention the cases to check")
         file1.close()
         return
+    Move_workbook.execute()
     file1.write("All test cases were passed!! \n")
     print("All test cases were passed!!")
     file1.close() 
