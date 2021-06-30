@@ -280,7 +280,8 @@ def execute():
     ##### STEP 0: Initialization #####
     server = 'http://tableauserver.eastus2.cloudapp.azure.com'
     username = 'Madheswaran'
-    workbook_name = 'WORLD_CUP'
+    NameFile=open("workbookname.txt","r+")
+    workbook_name = NameFile.read()
     source_site='TableauDEV'
     dest_site = 'TableauPROD'
 
@@ -320,7 +321,6 @@ def execute():
     print("\n7. Signing out and invalidating the authentication token")
     sign_out(server, source_auth_token)
     sign_out(server, dest_auth_token)
-execute()
 
 
 
