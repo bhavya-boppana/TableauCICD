@@ -315,7 +315,7 @@ def execute():
                      workbook_content, dest_project_id)
 
     ##### STEP 6: Deleting workbook from the source site #####
-    print("\n6. Deleting workbook from the source site")
+    #print("\n6. Deleting workbook from the source site")
     #delete_workbook(server, source_auth_token, source_site_id, workbook_id)
 
     ##### STEP 7: Sign out #####
