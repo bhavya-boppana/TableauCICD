@@ -11,6 +11,7 @@ import sys
 import re
 import math
 import getpass
+sys.stdout.flush()
 #from version import VERSION
 # The following packages are used to build a multi-part/mixed request.
 # They are contained in the 'requests' library
