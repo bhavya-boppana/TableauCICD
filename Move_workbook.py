@@ -94,7 +94,7 @@ def sign_in(server, username, password, site=""):
     Signs in to the server specified with the given credentials
     Returns the authentication token and the site ID.
     """
-    url = server + "/api/3.11/auth/signin"
+    url = server + "/api/3.12/auth/signin"
 
     # Builds the request
     xml_request = ET.Element('tsRequest')
@@ -134,7 +134,7 @@ def start_upload_session(server, auth_token, site_id):
     Creates a POST request that initiates a file upload session.
     Returns a session ID that is used by subsequent functions to identify the upload session.
     """
-    url = server + "/api/3.11/sites/{0}/fileUploads".format( site_id)
+    url = server + "/api/3.12/sites/{0}/fileUploads".format( site_id)
     server_response = requests.post(url, headers={'x-tableau-auth': auth_token})
     _check_status(server_response, 201)
     xml_response = ET.fromstring(_encode_for_display(server_response.text))
@@ -144,7 +144,7 @@ def get_workbook_id(server, auth_token, user_id, site_id, workbook_name):
     """
     Returns the workbook id and the project id that contains the workbook.
     """
-    url = server + "/api/3.11/sites/{0}/users/{1}/workbooks".format(site_id, user_id)
+    url = server + "/api/3.12/sites/{0}/users/{1}/workbooks".format(site_id, user_id)
     server_response = requests.get(url, headers={'x-tableau-auth': auth_token})
     _check_status(server_response, 200)
     xml_response = ET.fromstring(_encode_for_display(server_response.text))
@@ -163,7 +163,7 @@ def get_default_project_id(server, auth_token, site_id):
     page_num, page_size = 1, 100   # Default paginating values
 
     # Builds the request
-    url = server + "/api/3.11/sites/{0}/projects".format(site_id)
+    url = server + "/api/3.12/sites/{0}/projects".format(site_id)
     paged_url = url + "?pageSize={0}&pageNumber={1}".format(page_size, page_num)
     server_response = requests.get(paged_url, headers={'x-tableau-auth': auth_token})
     _check_status(server_response, 200)
@@ -196,7 +196,7 @@ def download(server, auth_token, site_id, workbook_id):
     Returns the filename and content of the workbook downloaded.
     """
     print("\tIn-memory download")
-    url = server + "/api/3.11/sites/{0}/workbooks/{1}/content".format(site_id, workbook_id)
+    url = server + "/api/3.12/sites/{0}/workbooks/{1}/content".format(site_id, workbook_id)
     server_response = requests.get(url, headers={'x-tableau-auth': auth_token})
     _check_status(server_response, 200)
 
@@ -230,7 +230,7 @@ def publish_workbook(server, auth_token, site_id, workbook_filename, workbook_co
         upload_id = start_upload_session(server, site_id, auth_token)
 
         # URL for PUT request to append chunks for publishing
-        put_url = server + "/api/3.11/sites/{0}/fileUploads/{1}".format(site_id, upload_id)
+        put_url = server + "/api/3.12/sites/{0}/fileUploads/{1}".format(site_id, upload_id)
 
         # Upload chunks of the workbook
         for x in range(0, workbook_size, CHUNK_SIZE):
@@ -256,7 +256,7 @@ def publish_workbook(server, auth_token, site_id, workbook_filename, workbook_co
                  'tableau_workbook': (workbook_filename, workbook_content, 'application/octet-stream')}
         payload, content_type = _make_multipart(parts)
 
-        publish_url = server + "/api/3.11/sites/{0}/workbooks".format(site_id)
+        publish_url = server + "/api/3.12/sites/{0}/workbooks".format(site_id)
         publish_url += "?workbookType={0}&overwrite=true".format(file_extension)
 
     # Make the request to publish and check status code
@@ -272,7 +272,7 @@ def delete_workbook(server, auth_token, site_id, workbook_id):
     
     """
     # Builds the request to delete workbook from the source project on server
-    url = server + "/api/3.11/sites/{0}/workbooks/{1}".format(site_id, workbook_id)
+    url = server + "/api/3.12/sites/{0}/workbooks/{1}".format(site_id, workbook_id)
     server_response = requests.delete(url, headers={'x-tableau-auth': auth_token})
     _check_status(server_response, 204)
     
@@ -280,14 +280,14 @@ def delete_workbook(server, auth_token, site_id, workbook_id):
 def execute():
     ##### STEP 0: Initialization #####
     server = 'http://tableauserver.eastus2.cloudapp.azure.com'
-    username = 'Madheswaran'
+    username = 'Madhes'
     NameFile=open("workbookname.txt","r+")
     workbook_name = NameFile.read()
     source_site='TableauDEV'
     dest_site = 'TableauPROD'
 
     print("\n*Moving '{0}' workbook to the 'default' project in {1}*".format(workbook_name, dest_site))
-    password = 'Admin1234@'
+    password = 'Admin@123'
 
     ##### STEP 1: Sign in #####
     print("\n1. Signing in to both sites to obtain authentication tokens")
