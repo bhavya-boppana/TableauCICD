@@ -121,8 +121,8 @@ def test():
     df = site_views_detailed_df[site_views_detailed_df['workbook_name'] == NameFile.read()]
     
     excel_name = str(str(NameFile.read()) + ".xlsx")
-    xl_sheet_count=len(pd.ExcelFile(excel_name).sheet_names)
-    excel=pd.read_excel(excel_name,list(range(xl_sheet_count)))
+    xl_sheet_count=len(pd.ExcelFile(r"WORLD_CUP.xlsx").sheet_names)
+    excel=pd.read_excel(r"WORLD_CUP.xlsx",list(range(xl_sheet_count)))
     xl_sheet1=excel[0]
     sheet_names=xl_sheet1['Sheet name']
     sheet_ids=[]
