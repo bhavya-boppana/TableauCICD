@@ -120,7 +120,7 @@ def test():
     site_views_detailed_df = flatten_dict_column(site_views_df, keys=['name', 'id'], col_name='workbook')
     df = site_views_detailed_df[site_views_detailed_df['workbook_name'] == NameFile.read()]
     
-    excel_name = str(NameFile.read()) + '.xlsx'
+    excel_name = str(str(NameFile.read()) + ".xlsx")
     xl_sheet_count=len(pd.ExcelFile(excel_name).sheet_names)
     excel=pd.read_excel(excel_name,list(range(xl_sheet_count)))
     xl_sheet1=excel[0]
