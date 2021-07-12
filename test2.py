@@ -175,7 +175,7 @@ def test():
         if(xl_sheet1.iloc[i,6]==1):
             tests_done=True
             check_res=Null_checking(sheet_id, xl_sheet1.iloc[i, 0])
-            if check_res=False:
+            if check_res==False:
                 all_passed=False
                 res_df.iloc[i,4]="Failed"
             else:
