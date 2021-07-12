@@ -130,8 +130,8 @@ def test():
         key=sheet_row.keys()[0]
         sheet_ids.append(sheet_row[key])
    
-    bool all_passed=True
-    bool tests_done=False
+    all_passed=True
+    tests_done=False
     res_df=pd.DataFrame(columns=['     Sheet Name            ',' Filter functionality checking ',' expected value checking ',' divide by zero checking ',' Null value checking'])
     row=["----         "]*int(5)
     for sheet_name in sheet_names:
