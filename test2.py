@@ -142,8 +142,8 @@ def test():
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
         if(xl_sheet1.iloc[i,1]==1):
             tests_done=True
-            filter_test_res=filter_test(sheet_id,excel,xl_sheet1.iloc[i,2])
-            if filter_test_res=False:
+            filter_test_res=filter_test(sheet_id,excel,xl_sheet1.iloc[i,2],xl_sheet1.iloc[i,0])
+            if filter_test_res==False:
                 all_passed=False
                 res_df.iloc[i,1]="Failed"
             else:
@@ -153,8 +153,8 @@ def test():
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
         if(xl_sheet1.iloc[i,3]==1):
             tests_done=True
-            expected_val_res=expected_val_test(sheet_id,excel,xl_sheet.iloc[i,4])
-            if expected_val_res=False:
+            expected_val_res=expected_val_test(sheet_id,excel,xl_sheet.iloc[i,4],xl_sheet1.iloc[i,0])
+            if expected_val_res==False:
                 all_passed=False
                 res_df.iloc[i,2]="Failed"
             else:
@@ -163,23 +163,23 @@ def test():
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
         if(xl_sheet1.iloc[i,5]==1):
             tests_done=True
-            check_res=divide_by_zero(sheet_id)
-            if check_res=False:
+            check_res=divide_by_zero(sheet_id,xl_sheet1.iloc[i,0])
+            if check_res==False:
                 all_passed=False
-                res_df.iloc[i,2]="Failed"
+                res_df.iloc[i,3]="Failed"
             else:
-                res_df.iloc[i,2]="Passed"
+                res_df.iloc[i,3]="Passed"
                
     #Null value checking
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
         if(xl_sheet1.iloc[i,6]==1):
             tests_done=True
-            check_res=divide_by_zero(sheet_id)
+            check_res=Null_checking(sheet_id, xl_sheet1.iloc[i, 0])
             if check_res=False:
                 all_passed=False
-                res_df.iloc[i,2]="Failed"
+                res_df.iloc[i,4]="Failed"
             else:
-                res_df.iloc[i,2]="Passed"
+                res_df.iloc[i,4]="Passed"
     with open("test_123.txt",'w') as outfile:
         res_df.to_string(outfile)
         outfile.write('\n\n\n')
