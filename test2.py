@@ -183,7 +183,7 @@ def test():
     with open("test_123.txt",'w') as outfile:
         res_df.to_string(outfile)
         outfile.write('\n\n\n')
-        if(all_passed=True):
+        if(all_passed==True):
             outfile.write("All test cases were passed and workbook has been pushed to the Production server!!")
             Move_workbook.execute()
         else:
