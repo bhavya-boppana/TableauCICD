@@ -81,7 +81,7 @@ def expected_val_utility(sheet_id,vals_df,sheet_name):
 
 
 def expected_val_test(sheet_id,excel,location_string,sheet_name):
-    locations=location_string.aplit(';')
+    locations=location_string.split(';')
     res=True
     for test_num in range(len(locations)):
         coordinates=locations[test_num.split(',')]
