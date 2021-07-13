@@ -186,12 +186,17 @@ def test():
                 res_df.iloc[i,4]="Failed"
             else:
                 res_df.iloc[i,4]="Passed"
+                
+    if tests_done == false:
+        ResDetailsFile.write("No test cases were done please mention some")
+        return
     with open("test_123.txt",'w') as outfile:
         res_df.to_string(outfile)
         outfile.write('\n\n\n')
         if(all_passed==True):
             outfile.write("All test cases were passed and workbook has been pushed to the Production server!!")
             Move_workbook.execute()
+            ResDetailsFile.write("All test cases were passed and workbook has been pushed to the Production server!!")
         else:
             outfile.write("workbook could not be pushed to Production server as some of the test cases were not passed")
 test()
