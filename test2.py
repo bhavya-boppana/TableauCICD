@@ -155,7 +155,7 @@ def test():
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
         if(xl_sheet1.iloc[i,3]==1):
             tests_done=True
-            expected_val_res=expected_val_test(sheet_id,excel,xl_sheet.iloc[i,4],xl_sheet1.iloc[i,0])
+            expected_val_res=expected_val_test(sheet_id,excel,xl_sheet1.iloc[i,4],xl_sheet1.iloc[i,0])
             if expected_val_res==False:
                 all_passed=False
                 res_df.iloc[i,2]="Failed"
