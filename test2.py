@@ -62,7 +62,7 @@ def filter_test(sheet_id,excel,location_string,sheet_name):
         xl_sheet_num=int(coordinates[0])
         start_col=int(coordinates[1])
         end_col=start_col+3
-        if filter_utility(sheet_id,excel[xl_sheet_num].iloc[:,start_col:end_col])==False:
+        if filter_utility(sheet_id,excel[xl_sheet_num].iloc[:,start_col:end_col], sheet_name)==False:
             res=False
     return res
 
@@ -88,7 +88,7 @@ def expected_val_test(sheet_id,excel,location_string,sheet_name):
         xl_sheet_num=int(coordinates[0])
         start_col=int(coordinates[1])
         end_col=start_col+2
-        if filter_utility(sheet_id,excel[xl_sheet_num].iloc[:,start_col:end_col])==False:
+        if filter_utility(sheet_id,excel[xl_sheet_num].iloc[:,start_col:end_col], sheet_name)==False:
             res=False
     return res
 
