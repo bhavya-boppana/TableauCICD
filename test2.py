@@ -123,7 +123,7 @@ def test():
     
     excel_name = str(str(NameFile.read()) + ".xlsx")
     path = "C:\\Users\\biaadmin\\.jenkins\\workspace\\sample\\"
-    xl_sheet_count=len(pd.ExcelFile(os.path.join(path, excel_name).sheet_names))
+    xl_sheet_count=len(pd.ExcelFile(os.path.join(path, excel_name)).sheet_names)
     excel=pd.read_excel(os.path.join(path, excel_name),list(range(xl_sheet_count)))
     xl_sheet1=excel[0]
     sheet_names=xl_sheet1['Sheet name']
