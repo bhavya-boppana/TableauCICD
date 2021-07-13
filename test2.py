@@ -146,7 +146,7 @@ def test():
    
     #filter_checking
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
-        if(xl_sheet1.iloc[i,1]==1):
+        if(lower(xl_sheet1.iloc[i,1])=="yes"):
             tests_done=True
             filter_test_res=filter_test(sheet_id,excel,xl_sheet1.iloc[i,2],xl_sheet1.iloc[i,0])
             if filter_test_res==False:
@@ -157,7 +157,7 @@ def test():
 
     #expected value checking
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
-        if(xl_sheet1.iloc[i,3]==1):
+        if(lower(xl_sheet1.iloc[i,3])=="yes"):
             tests_done=True
             expected_val_res=expected_val_test(sheet_id,excel,xl_sheet1.iloc[i,4],xl_sheet1.iloc[i,0])
             if expected_val_res==False:
@@ -167,7 +167,7 @@ def test():
                 res_df.iloc[i,2]="Passed"
     #divide by zero checking
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
-        if(xl_sheet1.iloc[i,5]==1):
+        if(lower(xl_sheet1.iloc[i,5])=="yes"):
             tests_done=True
             check_res=divide_by_zero(sheet_id,xl_sheet1.iloc[i,0])
             if check_res==False:
@@ -178,7 +178,7 @@ def test():
                
     #Null value checking
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
-        if(xl_sheet1.iloc[i,6]==1):
+        if(lower(xl_sheet1.iloc[i,6])=="yes"):
             tests_done=True
             check_res=Null_checking(sheet_id, xl_sheet1.iloc[i, 0])
             if check_res==False:
