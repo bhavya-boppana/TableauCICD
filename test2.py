@@ -67,7 +67,7 @@ def filter_test(sheet_id,excel,location_string,sheet_name):
     return res
 
 
-def expected_val_utility(sheet_id,vals_df,sheet_name):
+def expected_val_utility(sheet_id,checking_df,sheet_name):
     identifier_col=checking_df.columns[0]
     checking_col=checking_df.columns[1]
     sheet_df=get_view_data_dataframe(conn,view_id=sheet_id)
