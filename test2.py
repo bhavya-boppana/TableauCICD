@@ -118,7 +118,7 @@ def test():
    
     NameFile=open("workbookname.txt","r+")
     wbname = NameFile.read()
-    print("wbname: ",wnname)
+    print("wbname: ",wbname)
     site_views_df = get_views_dataframe(conn)
     site_views_detailed_df = flatten_dict_column(site_views_df, keys=['name', 'id'], col_name='workbook')
     df = site_views_detailed_df[site_views_detailed_df['workbook_name'] == wbname]
