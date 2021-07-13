@@ -117,11 +117,13 @@ def Null_checking(sheet_id,sheet_name):
 def test():
    
     NameFile=open("workbookname.txt","r+")
+    wbname = NameFile.read()
+    print("wbname: ",wnname)
     site_views_df = get_views_dataframe(conn)
     site_views_detailed_df = flatten_dict_column(site_views_df, keys=['name', 'id'], col_name='workbook')
-    df = site_views_detailed_df[site_views_detailed_df['workbook_name'] == NameFile.read()]
+    df = site_views_detailed_df[site_views_detailed_df['workbook_name'] == wbname]
     
-    excel_name = str(str(NameFile.read()) + ".xlsx")
+    excel_name = str(str(wbname) + ".xlsx")
     path = "C:\\Users\\biaadmin\\.jenkins\\workspace\\sample\\"
     xl_sheet_count=len(pd.ExcelFile(os.path.join(path, excel_name)).sheet_names)
     excel=pd.read_excel(os.path.join(path, excel_name),list(range(xl_sheet_count)))
