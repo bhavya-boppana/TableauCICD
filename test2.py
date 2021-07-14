@@ -47,6 +47,9 @@ def filter_utility(sheet_id,filter_df,sheet_name):
     for (filter_val,correct_val,identifier_val) in zip(filter_df[filter_df.columns[0]],filter_df[correct_col],filter_df[identifier_col]):
         params_dict={"filter":f"vf_{filter_name}={filter_val}"}
         sheet_df=get_view_data_dataframe(conn, view_id=sheet_id,parameter_dict=params_dict)
+        print(sheet_df[identifier_col])
+        print('\n\n\n')
+        print(identifier_val)
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][correct_col]
         key=record.keys()[0]
         if(record[key]!=correct_val):
