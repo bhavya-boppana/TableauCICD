@@ -11,12 +11,16 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 import pandas as pd
+import os
 
-df = pd.read_excel("C:\\Users\\bhavya boppana\\Downloads\\WORLD_CUP.xlsx")
+NameFile=open("workbookname.txt","r+")
+workbook_name = NameFile.read()
+path = "C:\\TableauTestResults\\TestCaseDetails"
+fileName = workbook_name + '.xlsx'
+df = pd.read_excel(os.path.join(path, fileName))
 
 
 fromaddr = "testmailtableau@gmail.com"
-print(df)
 toaddr = str(df.iloc[0,7])
    
 # instance of MIMEMultipart
@@ -29,17 +33,18 @@ msg['From'] = fromaddr
 msg['To'] = str(toaddr)
   
 # storing the subject 
-msg['Subject'] = "Tests on the tableau workbook have been done"
+msg['Subject'] = f"Tests on the {workbook_name} workbook have been done"
   
 # string to store the body of the mail
-body = "Checkout the results at the URL '\\20.186.37.98\TableauTestResults\TestResults'"
+body = "Checkout the results"
   
 # attach the body with the msg instance
 msg.attach(MIMEText(body, 'plain'))
   
 # open the file to be sent 
-filename = "WORLD_CUP.xlsx"
-attachment = open("C:\\Users\\bhavya boppana\\Downloads\\WORLD_CUP.xlsx", "rb")
+filename = workbook_name + "_TestResults.txt"
+path = "C:\\TableauTestResults\TestResults"
+attachment = open(os.path.join(filename, path), "rb")
   
 # instance of MIMEBase and named as p
 p = MIMEBase('application', 'octet-stream')
