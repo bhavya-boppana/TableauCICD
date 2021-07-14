@@ -50,6 +50,8 @@ def filter_utility(sheet_id,filter_df,sheet_name):
         print(sheet_df[identifier_col])
         print('\n\n\n')
         print(identifier_val)
+        print(correct_col)
+        print(sheet_df.columns)
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][correct_col]
         key=record.keys()[0]
         if(record[key]!=correct_val):
