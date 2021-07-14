@@ -45,7 +45,7 @@ def execute():
    # open the file to be sent 
    filename = workbook_name + "_TestResults.txt"
    path = "C:\\TableauTestResults\TestResults"
-   attachment = open(os.path.join(filename, path), "rb")
+   attachment = open(os.path.join(path, filename), "rb")
   
    # instance of MIMEBase and named as p
    p = MIMEBase('application', 'octet-stream')
