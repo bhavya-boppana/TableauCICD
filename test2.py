@@ -53,7 +53,9 @@ def filter_utility(sheet_id,filter_df,sheet_name):
         print(correct_col)
         print(sheet_df.columns)
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][correct_col]
+        print("fine")
         key=record.keys()[0]
+        print("fine")
         if(record[key]!=correct_val):
             ResDetailsFile.write(f"{filter_df.columns[0]} filter test did not pass on {sheet_name} because for filter value:{filter_val},{identifier_val} value is returned as {record[key]}, when it should be {correct_val} ")
             return False
