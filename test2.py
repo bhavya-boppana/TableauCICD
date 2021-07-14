@@ -152,9 +152,9 @@ def test():
             filter_test_res=filter_test(sheet_id,excel,xl_sheet1.iloc[i,2],xl_sheet1.iloc[i,0])
             if filter_test_res==False:
                 all_passed=False
-                res_df.iloc[i,1]="Failed"
+                res_df.iloc[i,1]="Failed         "
             else:
-                res_df.iloc[i,1]="Passed"
+                res_df.iloc[i,1]="Passed         "
 
     #expected value checking
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
@@ -163,9 +163,9 @@ def test():
             expected_val_res=expected_val_test(sheet_id,excel,xl_sheet1.iloc[i,4],xl_sheet1.iloc[i,0])
             if expected_val_res==False:
                 all_passed=False
-                res_df.iloc[i,2]="Failed"
+                res_df.iloc[i,2]="Failed         "
             else:
-                res_df.iloc[i,2]="Passed"
+                res_df.iloc[i,2]="Passed         "
     #divide by zero checking
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
         if(xl_sheet1.iloc[i,5].lower()=="yes"):
@@ -173,9 +173,9 @@ def test():
             check_res=divide_by_zero(sheet_id,xl_sheet1.iloc[i,0])
             if check_res==False:
                 all_passed=False
-                res_df.iloc[i,3]="Failed"
+                res_df.iloc[i,3]="Failed         "
             else:
-                res_df.iloc[i,3]="Passed"
+                res_df.iloc[i,3]="Passed         "
                
     #Null value checking
     for (i,sheet_id) in zip(range(len(sheet_ids)),sheet_ids):
@@ -184,9 +184,9 @@ def test():
             check_res=Null_checking(sheet_id, xl_sheet1.iloc[i, 0])
             if check_res==False:
                 all_passed=False
-                res_df.iloc[i,4]="Failed"
+                res_df.iloc[i,4]="Failed         "
             else:
-                res_df.iloc[i,4]="Passed"
+                res_df.iloc[i,4]="Passed         "
                 
     if tests_done == False:
         ResDetailsFile.write("No test cases were done please mention some")
