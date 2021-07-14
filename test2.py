@@ -13,6 +13,7 @@ import random
 import math
 import pandas as pd
 import Move_workbook
+import SendMail
 import sys
 import os
 sys.stdout.flush()
@@ -190,6 +191,7 @@ def test():
                 
     if tests_done == False:
         ResDetailsFile.write("No test cases were done please mention some")
+        SendMail.execute()
         return
     with open("test_123.txt",'w') as outfile:
         res_df.to_string(outfile)
@@ -200,4 +202,5 @@ def test():
             ResDetailsFile.write("All test cases were passed and workbook has been pushed to the Production server!!")
         else:
             outfile.write("workbook could not be pushed to Production server as some of the test cases were not passed")
+        SendMail.execute()
 test()
