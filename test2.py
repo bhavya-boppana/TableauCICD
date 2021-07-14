@@ -46,17 +46,11 @@ def filter_utility(sheet_id,filter_df,sheet_name):
     identifier_col=filter_df.columns[2]
     for (filter_val,correct_val,identifier_val) in zip(filter_df[filter_df.columns[0]],filter_df[correct_col],filter_df[identifier_col]):
         params_dict={"filter":f"vf_{filter_name}={filter_val}"}
+        print(sheet_name, '\n\n')
         print(filter_name,filter_val)
         sheet_df=get_view_data_dataframe(conn, view_id=sheet_id,parameter_dict=params_dict)
-        print(sheet_df[identifier_col])
-        print('\n\n\n')
-        print(identifier_val)
-        print(correct_col)
-        print(sheet_df.columns)
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][correct_col]
-        print("fine")
         key=record.keys()[0]
-        print("fine")
         if(record[key]!=correct_val):
             ResDetailsFile.write(f"{filter_df.columns[0]} filter test did not pass on {sheet_name} because for filter value:{filter_val},{identifier_val} value is returned as {record[key]}, when it should be {correct_val} ")
             return False
@@ -126,7 +120,6 @@ def test():
    
     NameFile=open("workbookname.txt","r+")
     wbname = NameFile.read()
-    print("wbname: ",wbname)
     site_views_df = get_views_dataframe(conn)
     site_views_detailed_df = flatten_dict_column(site_views_df, keys=['name', 'id'], col_name='workbook')
     df = site_views_detailed_df[site_views_detailed_df['workbook_name'] == wbname]
