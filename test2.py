@@ -188,7 +188,7 @@ def test():
             else:
                 res_df.iloc[i,4]="Passed"
                 
-    if tests_done == false:
+    if tests_done == False:
         ResDetailsFile.write("No test cases were done please mention some")
         return
     with open("test_123.txt",'w') as outfile:
