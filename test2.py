@@ -41,6 +41,7 @@ def replace_chars(filter_name):
     return new
 
 def filter_utility(sheet_id,filter_df,sheet_name):
+    print(filter_df)
     filter_name=replace_chars(filter_df.columns[0])
     correct_col=filter_df.columns[1]
     identifier_col=filter_df.columns[2]
