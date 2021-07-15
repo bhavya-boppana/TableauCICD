@@ -52,7 +52,7 @@ def filter_utility(sheet_id,filter_df,sheet_name):
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][correct_col]
         key=record.keys()[0]
         if(record[key]!=correct_val):
-            ResDetailsFile.write(f"{filter_df.columns[0]} filter test did not pass on {sheet_name} because for filter value:{filter_val},{identifier_val} value is returned as {record[key]}, when it should be {correct_val}")
+            ResDetailsFile.write(f" -> {filter_df.columns[0]} filter test did not pass on {sheet_name} because for filter value:{filter_val},{identifier_val} value is returned as {record[key]}, when it should be {correct_val}")
             ResDetailsFile.write('\n')
             return False
     return True
@@ -79,7 +79,7 @@ def expected_val_utility(sheet_id,checking_df,sheet_name):
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][checking_col]
         key=record.keys()[0]
         if(record[key]!=checking_val):
-            ResDetailsFile.write(f"expected value test did not pass on {sheet_name} because for {identifier_val}, {checking_col} value is returned as {record[key]}, when it should be {checking_val} \n")
+            ResDetailsFile.write(f" -> expected value test did not pass on {sheet_name} because for {identifier_val}, {checking_col} value is returned as {record[key]}, when it should be {checking_val} \n")
             ResDetailsFile.write('\n')
             return False
     return True
@@ -103,7 +103,7 @@ def divide_by_zero(sheet_id,sheet_name):
     for col in sheet_df.columns:
         for val in sheet_df[col]:
             if not isinstance(val,str) and math.isnan(val):
-                ResDetailsFile.write(f"divide by zero test did not pass on {sheet_name} because there are one or more divide by zero cases found in the column:{col} \n")
+                ResDetailsFile.write(f" -> divide by zero test did not pass on {sheet_name} because there are one or more divide by zero cases found in the column:{col} \n")
                 ResDetailsFile.write('\n')
                 return False
     return True
@@ -114,7 +114,7 @@ def Null_checking(sheet_id,sheet_name):
     for col in sheet_df.columns:
         for val in sheet_df[col]:
             if not isinstance(val,str) and math.isnan(val):
-                ResDetailsFile.write(f"null value checking test did not pass on {sheet_name} because there are one or more null values found in the column:{col} \n")
+                ResDetailsFile.write(f" -> null value checking test did not pass on {sheet_name} because there are one or more null values found in the column:{col} \n")
                 ResDetailsFile.write('\n')
                 return False
     return True
@@ -197,9 +197,12 @@ def test():
         return
    
     ResDetailsFile.write("*******************************************************************************************************************************************************\n")
+    ResDetailsFile.write('\n')
     res_df.to_string(ResDetailsFile)
+    ResDetailsFile.write('\n')
     ResDetailsFile.write("*******************************************************************************************************************************************************\n")
     if(all_passed==True):
+        ResDetailsFile.write('\n')
         ResDetailsFile.write("All test cases were passed and workbook has been pushed to the Production server!!")
         Move_workbook.execute()
     else:
