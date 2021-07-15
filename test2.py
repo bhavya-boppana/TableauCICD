@@ -199,13 +199,14 @@ def test():
     ResDetailsFile.write("*******************************************************************************************************************************************************\n")
     ResDetailsFile.write('\n\n')
     res_df.to_string(ResDetailsFile)
-    ResDetailsFile.write('\n\n')
+    ResDetailsFile.write('\n\n\n')
     ResDetailsFile.write("*******************************************************************************************************************************************************\n")
     if(all_passed==True):
-        ResDetailsFile.write('\n')
+        ResDetailsFile.write('\n\n')
         ResDetailsFile.write("All test cases were passed and workbook has been pushed to the Production server!!")
         Move_workbook.execute()
     else:
+        ResDetailsFile.write('\n\n')
         ResDetailsFile.write("workbook could not be pushed to Production server as some of the test cases were not passed")
     SendMail.execute()
 test()
