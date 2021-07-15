@@ -35,7 +35,7 @@ conn = TableauServerConnection(tableau_server_config, env='my_env')
 res=conn.sign_in()
 print("sign in:",res)
 ResDetailsFile = open("testing_details.txt","w")
-
+ResDetailsFile.write("*******************************************************************************************************************************************************\n")
 
 def replace_chars(filter_name):
     new=filter_name.replace(' ','%20')
@@ -197,9 +197,9 @@ def test():
         return
    
     ResDetailsFile.write("*******************************************************************************************************************************************************\n")
-    ResDetailsFile.write('\n')
+    ResDetailsFile.write('\n\n')
     res_df.to_string(ResDetailsFile)
-    ResDetailsFile.write('\n')
+    ResDetailsFile.write('\n\n')
     ResDetailsFile.write("*******************************************************************************************************************************************************\n")
     if(all_passed==True):
         ResDetailsFile.write('\n')
