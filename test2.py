@@ -51,7 +51,7 @@ def filter_utility(sheet_id,filter_df,sheet_name):
         sheet_df=get_view_data_dataframe(conn, view_id=sheet_id,parameter_dict=params_dict)
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][correct_col]
         key=record.keys()[0]
-        if(record[key]!=correct_val):
+        if(round(record[key], 2)!=round(correct_val, 2)):
             ResDetailsFile.write(f" -> {filter_df.columns[0]} filter test did not pass on {sheet_name} because for filter value:{filter_val},{identifier_val} value is returned as {record[key]}, when it should be {correct_val}")
             ResDetailsFile.write('\n')
             return False
@@ -78,7 +78,7 @@ def expected_val_utility(sheet_id,checking_df,sheet_name):
     for (identifier_val,checking_val) in zip(checking_df[identifier_col],checking_df[checking_col]):
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][checking_col]
         key=record.keys()[0]
-        if(record[key]!=checking_val):
+        if(round(record[key], 2)!=round(checking_val, 2)):
             ResDetailsFile.write(f" -> expected value test did not pass on {sheet_name} because for {identifier_val}, {checking_col} value is returned as {record[key]}, when it should be {checking_val} \n")
             ResDetailsFile.write('\n')
             return False
