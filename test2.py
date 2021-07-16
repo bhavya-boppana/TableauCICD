@@ -203,7 +203,7 @@ def test():
         return
     
         
-    ResDetailsFile = open('testing_123.txt', 'r+')
+    ResDetailsFile2 = open('testing_123.txt', 'r+')
     FinalFile = open('testing_details.txt', 'w')
     FinalFile.write(seperater)
     FinalFile.write('\n\n')
@@ -211,7 +211,7 @@ def test():
     FinalFile.write('\n\n')
     res_df.to_string(FinalFile)
     FinalFile.write('\n\n')
-    FinalFile.write(ResDetailsFile.read())
+    FinalFile.write(ResDetailsFile2.read())
     FinalFile.write('\n\n')
     FinalFile.write(seperater)
     if(all_passed==True):
