@@ -85,14 +85,12 @@ def expected_val_utility(sheet_id,checking_df,sheet_name):
     sheet_df=get_view_data_dataframe(conn,view_id=sheet_id)
     for (identifier_val,checking_val) in zip(checking_df[identifier_col],checking_df[checking_col]):
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][checking_col]
-        print(identifier_col)
-        print(identifier_val)
-        print(checking_col)
-        print(sheet_df)
         key=record.keys()[0]
         x1 = record[key]
         x2 = checking_val
+        print(x1,x2)
         if(isinstance(x1, str)):
+            print(f"{x1} is string")
             x1 = float(x1.replace(',', ''))
         if(isinstance(x2, str)):
             x2 = float(x2.replace(',', ''))
