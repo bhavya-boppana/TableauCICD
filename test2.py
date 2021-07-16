@@ -129,7 +129,7 @@ def Null_checking(sheet_id,sheet_name):
     sheet_df=get_view_data_dataframe(conn,view_id=sheet_id)
     for col in sheet_df.columns:
         for val in sheet_df[col]:
-            if not isinstance(val,str) and math.isnan(val):
+            if val is None:
                 ResDetailsFile.write(f" -> null value checking test did not pass on {sheet_name} because there are one or more null values found in the column:{col} \n")
                 ResDetailsFile.write('\n\n')
                 return False
