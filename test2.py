@@ -202,7 +202,7 @@ def test():
     
         
     FinalFile = open('testing_details.txt', 'w')
-    FinalFile.write(seperator)
+    FinalFile.write(seperater)
     FinalFile.write('\n\n')
     FinalFile.write('                                                                        TEST SUMMARY                                              ')
     FinalFile.write('\n\n')
@@ -210,7 +210,7 @@ def test():
     FinalFile.write('\n\n')
     FinalFile.write(ResDetailsFile.read())
     FinalFile.write('\n\n')
-    FinalFile.write(seperator)
+    FinalFile.write(seperater)
     if(all_passed==True):
         ResDetailsFile.write('\n\n')
         ResDetailsFile.write("NOTE: ALL TEST CASES WERE PASSED AND WORKBOOK HAS BEEN PUSHED TO PRODUCTION SERVER!!")
