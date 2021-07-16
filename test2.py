@@ -215,11 +215,11 @@ def test():
     FinalFile.write('\n\n')
     FinalFile.write(seperater)
     if(all_passed==True):
-        ResDetailsFile.write('\n\n')
-        ResDetailsFile.write("NOTE: ALL TEST CASES WERE PASSED AND WORKBOOK HAS BEEN PUSHED TO PRODUCTION SERVER!!")
+        FinalFile.write('\n\n')
+        FinalFile.write("NOTE: ALL TEST CASES WERE PASSED AND WORKBOOK HAS BEEN PUSHED TO PRODUCTION SERVER!!")
         Move_workbook.execute()
     else:
-        ResDetailsFile.write('\n\n')
-        ResDetailsFile.write("NOTE: WORKBOOK COULD NOT BE PUSHED TO PRODUCTION SERVER AS SOME OF THE TEST CASES WERE NOT PASSED :(")
+        FinalFile.write('\n\n')
+        FinalFile.write("NOTE: WORKBOOK COULD NOT BE PUSHED TO PRODUCTION SERVER AS SOME OF THE TEST CASES WERE NOT PASSED :(")
     SendMail.execute()
 test()
