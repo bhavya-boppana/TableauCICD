@@ -45,7 +45,6 @@ def replace_chars(filter_name):
     return new
 
 def filter_utility(sheet_id,filter_df,sheet_name):
-    print(filter_df)
     filter_name=replace_chars(filter_df.columns[0])
     correct_col=filter_df.columns[1]
     identifier_col=filter_df.columns[2]
@@ -86,6 +85,10 @@ def expected_val_utility(sheet_id,checking_df,sheet_name):
     sheet_df=get_view_data_dataframe(conn,view_id=sheet_id)
     for (identifier_val,checking_val) in zip(checking_df[identifier_col],checking_df[checking_col]):
         record=sheet_df.loc[sheet_df[identifier_col]==identifier_val][checking_col]
+        print(identifier_col)
+        print(identifier_val)
+        print(checking_col)
+        print(sheet_df)
         key=record.keys()[0]
         x1 = record[key]
         x2 = checking_val
