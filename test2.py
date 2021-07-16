@@ -193,7 +193,9 @@ def test():
                 res_df.iloc[i,4]="Failed         "
             else:
                 res_df.iloc[i,4]="Passed         "
-                
+             
+        
+    ResDetailsFile.close()
     if tests_done == False:
         file2 = open('testing_details.txt', 'w')
         file2.write("NO TESTS WERE MENTIONED TO TEST. PLEASE MENTION ONE OR MORE")
@@ -201,6 +203,7 @@ def test():
         return
     
         
+    ResDetailsFile = open('testing_123.txt', 'r')
     FinalFile = open('testing_details.txt', 'w')
     FinalFile.write(seperater)
     FinalFile.write('\n\n')
