@@ -203,7 +203,7 @@ def test():
         return
     
         
-    ResDetailsFile = open('testing_123.txt', 'r')
+    ResDetailsFile = open('testing_123.txt', 'r+')
     FinalFile = open('testing_details.txt', 'w')
     FinalFile.write(seperater)
     FinalFile.write('\n\n')
