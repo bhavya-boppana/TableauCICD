@@ -201,7 +201,7 @@ def test():
         return
     
         
-    FinalFile = open('testing_details.txt'. 'w')
+    FinalFile = open('testing_details.txt', 'w')
     FinalFile.write(seperator)
     FinalFile.write('\n\n')
     FinalFile.write('                                                                        TEST SUMMARY                                              ')
