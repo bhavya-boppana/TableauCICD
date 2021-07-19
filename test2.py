@@ -152,6 +152,7 @@ def test():
     sheet_names=xl_sheet1['Sheet name']
     sheet_ids=[]
     for sheet_name in sheet_names:
+        print(sheet_name)
         sheet_row=df.loc[df['name']==sheet_name]['id']
         key=sheet_row.keys()[0]
         sheet_ids.append(sheet_row[key])
